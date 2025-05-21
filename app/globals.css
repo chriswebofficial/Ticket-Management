@@ -4,18 +4,23 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .icon {
+    @apply text-amber-50 text-xl;
+  }
+  .btn {
+    @apply hover:no-underline bg-blue-400 hover:bg-blue-400 tracking-wider w-full font-bold cursor-pointer uppercase px-4 py-2 rounded-md transition-colors to-black;
+  }
+  form {
+    @apply rounded-xl p-4;
+  }
+  label {
+    @apply mt-4;
+  }
+  input,
+  select,
+  textarea {
+    @apply m-1 rounded;
   }
 }
 

@@ -116,6 +116,103 @@ Add notifications for ticket updates.
 
 Enhance UI with more animations and better accessibility.
 
+## Logic Behind the Ticket Management Project
+
+# User Creates Tickets
+
+You have a Ticket Form where users fill out details like title, description, category (e.g., Hardware Problem), priority (1-5), progress (0-100%), and status (not started, started, done).
+
+When submitted, the form sends this data via a POST request to your backend API.
+
+# Backend Stores Tickets in MongoDB
+
+The backend connects to a MongoDB database using Mongoose.
+
+It saves the ticket data as a document in a tickets collection, using a schema that defines the fields and their types.
+
+# Tickets are Retrieved and Displayed
+
+Your frontend fetches the tickets with a GET request to the API.
+
+Tickets are grouped by their category (Hardware, Software, Project) and displayed in a dashboard.
+
+Each ticket shows details and visual elements for priority, progress, and status.
+
+# Ticket Management
+
+Users can see tickets grouped by category.
+
+You have components to show the priority, progress bar, and status for each ticket.
+
+Users can delete tickets via the frontend, which sends a DELETE request to remove tickets from the database.
+
+# Overall Flow
+
+Form Input → POST to API → Stored in Database
+
+Frontend Fetch → GET from API → Display grouped tickets
+
+User Action (Delete) → DELETE request to API → Database removes ticket → Frontend refreshes
+
++---------------------+
+| User fills form |
+| (title, description, |
+| category, priority, |
+| progress, status) |
++----------+----------+
+|
+v
++---------------------+
+| Form data sent via |
+| POST request to API |
++----------+----------+
+|
+v
++---------------------+
+| Backend API receives |
+| ticket data and |
+| saves it to MongoDB |
++----------+----------+
+|
+v
++---------------------+
+| Frontend fetches |
+| tickets via GET |
+| request from API |
++----------+----------+
+|
+v
++---------------------+
+| Tickets grouped by |
+| category and |
+| displayed on the |
+| dashboard |
++----------+----------+
+|
+v
++---------------------+
+| User can delete a |
+| ticket |
++----------+----------+
+|
+v
++---------------------+
+| DELETE request sent |
+| to API |
++----------+----------+
+|
+v
++---------------------+
+| Backend deletes |
+| ticket from DB |
++----------+----------+
+|
+v
++---------------------+
+| Frontend refreshes |
+| ticket list |
++---------------------+
+
 ## License
 
 # MIT License
